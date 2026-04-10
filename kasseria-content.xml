@@ -3,7 +3,8 @@
   ============================================================
   Le Kasseria — Fichier d'import WordPress (WXR)
   Import via : Outils → Importer → WordPress
-  Contient : page d'accueil + Customizer theme_mods
+  Contient : page d'accueil + plats + Customizer theme_mods
+  Images : Unsplash (libres de droits, URLs stables)
   ============================================================
 -->
 <rss version="2.0"
@@ -33,13 +34,12 @@
       <wp:author_last_name><![CDATA[Kasseria]]></wp:author_last_name>
     </wp:author>
 
-    <!-- ── CATÉGORIES DE PLATS ── -->
+    <!-- ── CATÉGORIES ── -->
     <wp:category>
       <wp:term_id>1</wp:term_id>
       <wp:category_nicename><![CDATA[entrees]]></wp:category_nicename>
       <wp:category_parent></wp:category_parent>
       <wp:cat_name><![CDATA[Entrées]]></wp:cat_name>
-      <wp:category_description><![CDATA[]]></wp:category_description>
     </wp:category>
     <wp:category>
       <wp:term_id>2</wp:term_id>
@@ -73,6 +73,50 @@
     </wp:category>
 
     <!-- ══════════════════════════════════════════════
+         IMAGES DE RÉFÉRENCE (Unsplash — URLs stables)
+         Hero       : four à bois / pide
+         About main : salle de restaurant
+         About acc  : adana kebab
+         Gallery 1  : İskender (signature)
+         Gallery 2  : Kıymalı Pide
+         Gallery 3  : Lahmacun
+         Gallery 4  : Adana kebab
+         CTA bg     : intérieur restaurant
+    ══════════════════════════════════════════════ -->
+    <wp:postmeta_global>
+      <wp:meta_key><![CDATA[kasseria_img_hero]]></wp:meta_key>
+      <wp:meta_value><![CDATA[https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=1200&q=85&auto=format&fit=crop]]></wp:meta_value>
+    </wp:postmeta_global>
+    <wp:postmeta_global>
+      <wp:meta_key><![CDATA[kasseria_img_about_main]]></wp:meta_key>
+      <wp:meta_value><![CDATA[https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop]]></wp:meta_value>
+    </wp:postmeta_global>
+    <wp:postmeta_global>
+      <wp:meta_key><![CDATA[kasseria_img_about_accent]]></wp:meta_key>
+      <wp:meta_value><![CDATA[https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80&auto=format&fit=crop]]></wp:meta_value>
+    </wp:postmeta_global>
+    <wp:postmeta_global>
+      <wp:meta_key><![CDATA[kasseria_img_gallery_1]]></wp:meta_key>
+      <wp:meta_value><![CDATA[https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=900&q=80&auto=format&fit=crop]]></wp:meta_value>
+    </wp:postmeta_global>
+    <wp:postmeta_global>
+      <wp:meta_key><![CDATA[kasseria_img_gallery_2]]></wp:meta_key>
+      <wp:meta_value><![CDATA[https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&q=80&auto=format&fit=crop]]></wp:meta_value>
+    </wp:postmeta_global>
+    <wp:postmeta_global>
+      <wp:meta_key><![CDATA[kasseria_img_gallery_3]]></wp:meta_key>
+      <wp:meta_value><![CDATA[https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80&auto=format&fit=crop]]></wp:meta_value>
+    </wp:postmeta_global>
+    <wp:postmeta_global>
+      <wp:meta_key><![CDATA[kasseria_img_gallery_4]]></wp:meta_key>
+      <wp:meta_value><![CDATA[https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80&auto=format&fit=crop]]></wp:meta_value>
+    </wp:postmeta_global>
+    <wp:postmeta_global>
+      <wp:meta_key><![CDATA[kasseria_img_cta_bg]]></wp:meta_key>
+      <wp:meta_value><![CDATA[https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1280&q=80&auto=format&fit=crop]]></wp:meta_value>
+    </wp:postmeta_global>
+
+    <!-- ══════════════════════════════════════════════
          PAGE D'ACCUEIL
     ══════════════════════════════════════════════ -->
     <item>
@@ -93,6 +137,18 @@
         <wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
         <wp:meta_value><![CDATA[front-page.php]]></wp:meta_value>
       </wp:postmeta>
+      <wp:postmeta>
+        <wp:meta_key><![CDATA[_kasseria_hero_image]]></wp:meta_key>
+        <wp:meta_value><![CDATA[https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=1200&q=85&auto=format&fit=crop]]></wp:meta_value>
+      </wp:postmeta>
+      <wp:postmeta>
+        <wp:meta_key><![CDATA[_kasseria_about_image_main]]></wp:meta_key>
+        <wp:meta_value><![CDATA[https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop]]></wp:meta_value>
+      </wp:postmeta>
+      <wp:postmeta>
+        <wp:meta_key><![CDATA[_kasseria_about_image_accent]]></wp:meta_key>
+        <wp:meta_value><![CDATA[https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80&auto=format&fit=crop]]></wp:meta_value>
+      </wp:postmeta>
     </item>
 
     <!-- ══════════════════════════════════════════════
@@ -109,6 +165,7 @@
       <category domain="categorie_plat" nicename="entrees"><![CDATA[Entrées]]></category>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_prix_seul]]></wp:meta_key><wp:meta_value><![CDATA[€5,00]]></wp:meta_value></wp:postmeta>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_ordre]]></wp:meta_key><wp:meta_value><![CDATA[1]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key><![CDATA[_kasseria_image]]></wp:meta_key><wp:meta_value><![CDATA[https://images.unsplash.com/photo-1547592180-85f173990554?w=150&q=70&auto=format&fit=crop]]></wp:meta_value></wp:postmeta>
     </item>
     <item>
       <title>Mercimek</title>
@@ -121,6 +178,7 @@
       <category domain="categorie_plat" nicename="entrees"><![CDATA[Entrées]]></category>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_prix_seul]]></wp:meta_key><wp:meta_value><![CDATA[€4,00]]></wp:meta_value></wp:postmeta>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_ordre]]></wp:meta_key><wp:meta_value><![CDATA[2]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key><![CDATA[_kasseria_image]]></wp:meta_key><wp:meta_value><![CDATA[https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=150&q=70&auto=format&fit=crop]]></wp:meta_value></wp:postmeta>
     </item>
     <item>
       <title>Peynir Kızartma</title>
@@ -133,6 +191,7 @@
       <category domain="categorie_plat" nicename="entrees"><![CDATA[Entrées]]></category>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_prix_seul]]></wp:meta_key><wp:meta_value><![CDATA[€5,00]]></wp:meta_value></wp:postmeta>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_ordre]]></wp:meta_key><wp:meta_value><![CDATA[3]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key><![CDATA[_kasseria_image]]></wp:meta_key><wp:meta_value><![CDATA[https://images.unsplash.com/photo-1531749668029-2db88e4276c7?w=150&q=70&auto=format&fit=crop]]></wp:meta_value></wp:postmeta>
     </item>
     <item>
       <title>Salade Le Kasseria</title>
@@ -145,6 +204,7 @@
       <category domain="categorie_plat" nicename="entrees"><![CDATA[Entrées]]></category>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_prix_seul]]></wp:meta_key><wp:meta_value><![CDATA[€5,00]]></wp:meta_value></wp:postmeta>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_ordre]]></wp:meta_key><wp:meta_value><![CDATA[4]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key><![CDATA[_kasseria_image]]></wp:meta_key><wp:meta_value><![CDATA[https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=150&q=70&auto=format&fit=crop]]></wp:meta_value></wp:postmeta>
     </item>
     <item>
       <title>Salade Paysanne</title>
@@ -157,6 +217,7 @@
       <category domain="categorie_plat" nicename="entrees"><![CDATA[Entrées]]></category>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_prix_seul]]></wp:meta_key><wp:meta_value><![CDATA[€3,00]]></wp:meta_value></wp:postmeta>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_ordre]]></wp:meta_key><wp:meta_value><![CDATA[5]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key><![CDATA[_kasseria_image]]></wp:meta_key><wp:meta_value><![CDATA[https://images.unsplash.com/photo-1540420773420-3366772f4999?w=150&q=70&auto=format&fit=crop]]></wp:meta_value></wp:postmeta>
     </item>
 
     <!-- ══════════════════════════════════════════════
@@ -174,6 +235,7 @@
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_prix_seul]]></wp:meta_key><wp:meta_value><![CDATA[€15,00]]></wp:meta_value></wp:postmeta>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_badge]]></wp:meta_key><wp:meta_value><![CDATA[Signature]]></wp:meta_value></wp:postmeta>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_ordre]]></wp:meta_key><wp:meta_value><![CDATA[1]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key><![CDATA[_kasseria_image]]></wp:meta_key><wp:meta_value><![CDATA[https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=150&q=70&auto=format&fit=crop]]></wp:meta_value></wp:postmeta>
     </item>
     <item>
       <title>Kasseria Royale</title>
@@ -187,6 +249,7 @@
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_prix_seul]]></wp:meta_key><wp:meta_value><![CDATA[€17,00]]></wp:meta_value></wp:postmeta>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_badge]]></wp:meta_key><wp:meta_value><![CDATA[Maison]]></wp:meta_value></wp:postmeta>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_ordre]]></wp:meta_key><wp:meta_value><![CDATA[2]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key><![CDATA[_kasseria_image]]></wp:meta_key><wp:meta_value><![CDATA[https://images.unsplash.com/photo-1544025162-d76694265947?w=150&q=70&auto=format&fit=crop]]></wp:meta_value></wp:postmeta>
     </item>
     <item>
       <title>Kasseria Izgara</title>
@@ -199,16 +262,16 @@
       <category domain="categorie_plat" nicename="specialites"><![CDATA[Spécialités]]></category>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_prix_seul]]></wp:meta_key><wp:meta_value><![CDATA[€13,50]]></wp:meta_value></wp:postmeta>
       <wp:postmeta><wp:meta_key><![CDATA[_kasseria_ordre]]></wp:meta_key><wp:meta_value><![CDATA[3]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key><![CDATA[_kasseria_image]]></wp:meta_key><wp:meta_value><![CDATA[https://images.unsplash.com/photo-1544025162-d76694265947?w=150&q=70&auto=format&fit=crop]]></wp:meta_value></wp:postmeta>
     </item>
 
     <!-- ══════════════════════════════════════════════
          OPTIONS CUSTOMIZER (theme_mods)
-         → Ces valeurs sont lues par get_theme_mod()
-         → À importer manuellement dans Apparence → Personnaliser
+         → À importer dans Apparence → Personnaliser
          → OU via le plugin « Customizer Export/Import »
     ══════════════════════════════════════════════ -->
     <!--
-    CUSTOMIZER REFERENCE — copier ces valeurs dans Apparence → Personnaliser :
+    CUSTOMIZER REFERENCE :
 
     kasseria_telephone     = 0956959092
     kasseria_adresse       = 9 rue Pierre Termier, 42100 Saint-Étienne
@@ -216,6 +279,11 @@
     kasseria_hero_subtitle = Cuisine turque au feu de bois · Viandes halal · Saint-Étienne
     kasseria_instagram     = #
     kasseria_facebook      = #
+
+    kasseria_img_hero         = https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=1200&q=85&auto=format&fit=crop
+    kasseria_img_about_main   = https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop
+    kasseria_img_about_accent = https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80&auto=format&fit=crop
+    kasseria_img_cta_bg       = https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1280&q=80&auto=format&fit=crop
 
     HORAIRES :
     kasseria_horaire_lundi    = Fermé
