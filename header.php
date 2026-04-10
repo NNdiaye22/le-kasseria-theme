@@ -4,8 +4,8 @@
  * Auteur : 2N — Ndiogou Ndiaye
  */
 defined( 'ABSPATH' ) || exit;
-$tel      = kasseria_opt( 'kasseria_telephone', '+33 09 56 95 90 92' );
-$tel_href = preg_replace( '/\s/', '', $tel );
+$tel      = kasseria_opt( 'kasseria_telephone', '0956959092' );
+$tel_href = 'tel:+33' . ltrim( preg_replace( '/[^0-9]/', '', $tel ), '0' );
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> data-theme="dark">
@@ -35,11 +35,11 @@ $tel_href = preg_replace( '/\s/', '', $tel );
   </a>
 
   <div class="nav-links">
-    <a href="#accueil"><?php _e( 'Accueil', 'le-kasseria' ); ?></a>
-    <a href="#apropos"><?php _e( 'À Propos', 'le-kasseria' ); ?></a>
-    <a href="#galerie"><?php _e( 'Galerie', 'le-kasseria' ); ?></a>
-    <a href="#menu"><?php _e( 'Menu', 'le-kasseria' ); ?></a>
-    <a href="tel:<?php echo esc_attr( $tel_href ); ?>" class="nav-cta"><?php _e( 'Commander', 'le-kasseria' ); ?></a>
+    <a href="#accueil"><?php _e( 'Accueil',   'le-kasseria' ); ?></a>
+    <a href="#apropos"><?php _e( 'À Propos',  'le-kasseria' ); ?></a>
+    <a href="#galerie"><?php _e( 'Galerie',   'le-kasseria' ); ?></a>
+    <a href="#menu"   ><?php _e( 'Menu',      'le-kasseria' ); ?></a>
+    <a href="<?php echo esc_attr( $tel_href ); ?>" class="nav-cta"><?php _e( 'Commander', 'le-kasseria' ); ?></a>
   </div>
 
   <button class="nav-hamburger" id="hamburger"
@@ -53,12 +53,12 @@ $tel_href = preg_replace( '/\s/', '', $tel );
 
 <!-- ─── MENU MOBILE ─── -->
 <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="<?php _e( 'Menu mobile', 'le-kasseria' ); ?>">
-  <a href="#accueil"  class="mobile-link"><?php _e( 'Accueil',  'le-kasseria' ); ?></a>
-  <a href="#apropos"  class="mobile-link"><?php _e( 'À Propos', 'le-kasseria' ); ?></a>
-  <a href="#galerie"  class="mobile-link"><?php _e( 'Galerie',  'le-kasseria' ); ?></a>
-  <a href="#menu"     class="mobile-link"><?php _e( 'Menu',     'le-kasseria' ); ?></a>
-  <a href="#contact"  class="mobile-link"><?php _e( 'Contact',  'le-kasseria' ); ?></a>
-  <a href="tel:<?php echo esc_attr( $tel_href ); ?>" class="nav-cta" style="margin-top:1rem;">
+  <a href="#accueil" class="mobile-link"><?php _e( 'Accueil',  'le-kasseria' ); ?></a>
+  <a href="#apropos" class="mobile-link"><?php _e( 'À Propos', 'le-kasseria' ); ?></a>
+  <a href="#galerie" class="mobile-link"><?php _e( 'Galerie',  'le-kasseria' ); ?></a>
+  <a href="#menu"    class="mobile-link"><?php _e( 'Menu',     'le-kasseria' ); ?></a>
+  <a href="#contact" class="mobile-link"><?php _e( 'Contact',  'le-kasseria' ); ?></a>
+  <a href="<?php echo esc_attr( $tel_href ); ?>" class="nav-cta" style="margin-top:1rem;">
     <?php _e( 'Commander', 'le-kasseria' ); ?>
   </a>
 </div>
