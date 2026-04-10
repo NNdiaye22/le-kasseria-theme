@@ -2,13 +2,6 @@
 /**
  * Le Kasseria — functions.php
  * Auteur : 2N — Ndiogou Ndiaye | github.com/NNdiaye22
- *
- * CE FICHIER EST LE CENTRE DE CONTRÔLE DU THÈME.
- * Il permet de :
- *  - Gérer la navigation WordPress (menus dynamiques)
- *  - Ajouter / supprimer des onglets de catégorie dans le menu restaurant
- *  - Ajouter / supprimer des plats avec photo, prix, description
- *  - Modifier les infos du restaurant (tel, adresse, horaires) via le Customizer
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -43,10 +36,9 @@ add_action( 'after_setup_theme', 'kasseria_setup' );
 function kasseria_enqueue() {
     $v = wp_get_theme()->get( 'Version' );
     wp_enqueue_style( 'kasseria-fonts-fontshare', 'https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap', [], null );
-    wp_enqueue_style( 'kasseria-fonts-google', 'https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap', [], null );
+    wp_enqueue_style( 'kasseria-fonts-google', 'https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap', [], null );
     wp_enqueue_style( 'kasseria-main', get_template_directory_uri() . '/assets/css/style.css', [], $v );
-    wp_enqueue_script( 'lucide', 'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js', [], null, true );
-    wp_enqueue_script( 'kasseria-main', get_template_directory_uri() . '/assets/js/main.js', [ 'lucide' ], $v, true );
+    wp_enqueue_script( 'kasseria-main', get_template_directory_uri() . '/assets/js/main.js', [], $v, true );
     wp_localize_script( 'kasseria-main', 'KasseriaData', [
         'ajaxUrl' => admin_url( 'admin-ajax.php' ),
         'nonce'   => wp_create_nonce( 'kasseria_nonce' ),
@@ -57,9 +49,6 @@ add_action( 'wp_enqueue_scripts', 'kasseria_enqueue' );
 
 /* ═══════════════════════════════════════════════════
  *  3. CUSTOM POST TYPE — PLATS
- *  → Admin WP : "Plats" dans le menu latéral
- *  → Ajouter un plat : Plats → Ajouter
- *  → Supprimer un plat : Plats → liste → Corbeille
  * ═══════════════════════════════════════════════════ */
 function kasseria_register_cpt_plats() {
     $labels = [
@@ -91,9 +80,6 @@ add_action( 'init', 'kasseria_register_cpt_plats' );
 
 /* ═══════════════════════════════════════════════════
  *  4. TAXONOMIE — CATÉGORIES DE PLATS
- *  → Admin WP : Plats → Catégories
- *  → Ajouter un onglet : créer une nouvelle catégorie
- *  → Supprimer un onglet : supprimer la catégorie
  * ═══════════════════════════════════════════════════ */
 function kasseria_register_tax_categories() {
     $labels = [
@@ -137,17 +123,15 @@ function kasseria_plat_metabox_cb( $post ) {
       </tr>
       <tr>
         <th><label for="kasseria_prix_menu"><?php _e('Prix menu (+frites +boisson)', 'le-kasseria'); ?></label></th>
-        <td><input type="text" id="kasseria_prix_menu" name="kasseria_prix_menu" value="<?php echo esc_attr($prix_menu); ?>" placeholder="ex: €10,00 — laisser vide si pas de menu" class="regular-text">
-        <p class="description"><?php _e('Laisser vide si ce plat n\'a pas de formule menu.', 'le-kasseria'); ?></p></td>
+        <td><input type="text" id="kasseria_prix_menu" name="kasseria_prix_menu" value="<?php echo esc_attr($prix_menu); ?>" placeholder="ex: €10,00" class="regular-text"></td>
       </tr>
       <tr>
         <th><label for="kasseria_badge"><?php _e('Badge / étiquette', 'le-kasseria'); ?></label></th>
-        <td><input type="text" id="kasseria_badge" name="kasseria_badge" value="<?php echo esc_attr($badge); ?>" placeholder="ex: Signature, Nouveau, Halal…" class="regular-text"></td>
+        <td><input type="text" id="kasseria_badge" name="kasseria_badge" value="<?php echo esc_attr($badge); ?>" placeholder="ex: Signature, Nouveau…" class="regular-text"></td>
       </tr>
       <tr>
         <th><label for="kasseria_ordre"><?php _e('Ordre d\'affichage', 'le-kasseria'); ?></label></th>
-        <td><input type="number" id="kasseria_ordre" name="kasseria_ordre" value="<?php echo esc_attr($ordre ?: 10); ?>" min="1" max="999" class="small-text">
-        <p class="description"><?php _e('Plus le chiffre est petit, plus le plat apparaît en premier.', 'le-kasseria'); ?></p></td>
+        <td><input type="number" id="kasseria_ordre" name="kasseria_ordre" value="<?php echo esc_attr($ordre ?: 10); ?>" min="1" max="999" class="small-text"></td>
       </tr>
     </table>
     <?php
@@ -170,7 +154,6 @@ add_action( 'save_post_plat', 'kasseria_save_plat_meta' );
 
 /* ═══════════════════════════════════════════════════
  *  6. CUSTOMIZER — INFORMATIONS DU RESTAURANT
- *  → Admin WP : Apparence → Personnaliser
  * ═══════════════════════════════════════════════════ */
 function kasseria_customizer( $wp_customize ) {
     $wp_customize->add_section( 'kasseria_restaurant', [
@@ -212,7 +195,6 @@ add_action( 'customize_register', 'kasseria_customizer' );
 
 /* ═══════════════════════════════════════════════════
  *  7. DONNÉES INITIALES — SEED DES PLATS
- *  → Exécuté une seule fois à l'activation du thème
  * ═══════════════════════════════════════════════════ */
 function kasseria_seed_menu_data() {
     if ( get_option( 'kasseria_seeded' ) ) return;
@@ -277,7 +259,7 @@ function kasseria_seed_menu_data() {
         [ 'cat' => 'specialites', 'title' => 'Kasseria Royale','desc' => 'Le plat signature — 5 viandes grillées, accompagnements complets',                                     'prix' => '€17,00', 'badge' => 'Maison', 'ordre' => 3 ],
         [ 'cat' => 'specialites', 'title' => 'Kasseria Izgara','desc' => '3 viandes grillées au charbon, garnitures généreuses',                                                  'prix' => '€13,50', 'ordre' => 4 ],
         [ 'cat' => 'specialites', 'title' => 'Kiremit Köfte',  'desc' => 'Köfte cuits à la tuile en terre cuite, sauce épicée',                                                   'prix' => '€10,00', 'ordre' => 5 ],
-        [ 'cat' => 'specialites', 'title' => 'Kiremit Dinde',  'desc' => "Dinde mijotée à la tuile, arômes d'herbes et tomate",                                                  'prix' => '€10,00', 'ordre' => 6 ],
+        [ 'cat' => 'specialites', 'title' => 'Kiremit Dinde',  'desc' => 'Dinde mijotée à la tuile, arômes d\'herbes et tomate',                                                  'prix' => '€10,00', 'ordre' => 6 ],
         [ 'cat' => 'barquettes', 'title' => 'Petite Frites',   'desc' => '', 'prix' => '€1,50',  'ordre' => 1 ],
         [ 'cat' => 'barquettes', 'title' => 'Moyenne Frites',  'desc' => '', 'prix' => '€3,00',  'ordre' => 2 ],
         [ 'cat' => 'barquettes', 'title' => 'Grande Frites',   'desc' => '', 'prix' => '€4,50',  'ordre' => 3 ],
@@ -309,7 +291,7 @@ function kasseria_seed_menu_data() {
 add_action( 'after_switch_theme', 'kasseria_seed_menu_data' );
 
 /* ═══════════════════════════════════════════════════
- *  8. HELPERS — FONCTIONS UTILITAIRES
+ *  8. HELPERS
  * ═══════════════════════════════════════════════════ */
 function kasseria_get_categories() {
     $terms = get_terms( [ 'taxonomy' => 'categorie_plat', 'hide_empty' => true, 'orderby' => 'meta_value_num', 'meta_key' => 'kasseria_order', 'order' => 'ASC' ] );
@@ -326,7 +308,15 @@ function kasseria_opt( $key, $default = '' ) {
 
 function kasseria_get_horaires() {
     $jours    = [ 'lundi' => 'Lundi', 'mardi' => 'Mardi', 'mercredi' => 'Mercredi', 'jeudi' => 'Jeudi', 'vendredi' => 'Vendredi', 'samedi' => 'Samedi', 'dimanche' => 'Dimanche' ];
-    $defaults = [ 'lundi' => 'Fermé', 'mardi' => 'Fermé', 'mercredi' => '12:00–14:00, 18:00–22:00', 'jeudi' => '12:00–14:00, 18:00–22:00', 'vendredi' => '12:00–14:00, 18:00–22:00', 'samedi' => '12:00–14:00, 18:00–22:00', 'dimanche' => '12:00–14:00, 18:00–22:00' ];
+    $defaults = [
+        'lundi'    => 'Fermé',
+        'mardi'    => 'Fermé',
+        'mercredi' => '12:00–14:00, 18:00–22:00',
+        'jeudi'    => '12:00–14:00, 18:00–22:00',
+        'vendredi' => '12:00–14:00, 18:00–22:00',
+        'samedi'   => '12:00–14:00, 18:00–22:00',
+        'dimanche' => '12:00–14:00, 18:00–22:00',
+    ];
     $result = [];
     foreach ( $jours as $slug => $label ) {
         $val = kasseria_opt( "kasseria_horaire_$slug", $defaults[$slug] );
